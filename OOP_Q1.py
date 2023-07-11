@@ -46,4 +46,7 @@ if __name__ == "__main__":
     obj.union(obj, obj1)
     obj.intersection(obj, obj1)
     obj.isEqualTo(obj, obj1)
+    # Adding first Commit
+    obj.insertElement(1)
+
 
