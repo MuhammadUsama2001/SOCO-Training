@@ -1,31 +1,28 @@
-library_cat = {}
-availability = {}
 class Library:
+    library_cat = {}
+    availability = {}
 
     def add_item(self, identifier, title):
-        library_cat.setdefault(identifier, []).extend([title])
+        Library.library_cat.setdefault(identifier, []).extend([title])
 
     def display_catalog(self):
-        print(f"Available Catalogue: {library_cat}")
+        print(f"Available Catalogue: {Library.library_cat}")
 
     def check_availability(self):
-        for identifier in library_cat:
-            availability[identifier] = []
-            availability[identifier].append(True)
-            # self.availability
-        print(availability)
+        for identifier in Library.library_cat:
+            Library.availability[identifier] = []
+            Library.availability[identifier].append(True)
+        print(Library.availability)
 
 
 class LibraryItems(Library):
-
     def __init__(self, identifier, title, content):
-        super().__init__()
         self.identifier = identifier
         self.title = title
         self.content = content
 
     def check_availability(self):
-        if self.identifier in library_cat:
+        if self.identifier in Library.library_cat:
             return True
         else:
             return False
@@ -65,13 +62,18 @@ class CD(LibraryItems):
         super().display_details()
         print(f"Content: {self.content}")
 
-
 if __name__ == "__main__":
     a = Library()
-    c = CD('Fww', 'ML', 'Text')
-    c.add_item('Fww', 'ML')
-    c.display_details()
-    b = Book('BB', 'AI', 'Text')
-    b.add_item('BB', 'AI')
-    b.display_details()
+    a.add_item('FDD', 'Python')
+    a.add_item('G454', 'ML')
+    a.display_catalog()
     a.check_availability()
+    b = LibraryItems('DFW', 'WEEE', 'Text')
+    b.display_details()
+    b.add_item('DFW', 'WEEE')
+    a.display_catalog()
+    b.display_details()
+    c = CD('QWE', 'MLOPS', 'Topics')
+    c.add_item('QWE', 'MLOPS')
+    c.check_availability()
+    c.display_catalog()
